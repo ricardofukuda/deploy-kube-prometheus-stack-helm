@@ -2,6 +2,7 @@
 
 ## Reference github repo:
 https://github.com/prometheus-community/helm-charts/tree/kube-prometheus-stack-43.2.1/charts/kube-prometheus-stack
+
 https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-43.2.1/charts/kube-prometheus-stack/values.yaml
 
 ## Helm Chart Install
