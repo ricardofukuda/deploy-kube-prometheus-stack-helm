@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: nginx
+    release: kube-prometheus-stack
+  name: nginx-rule
+  namespace: nginx
+spec:
+  groups:
+    - name: nginx
+      rules:
+        - alert: NginxFailed
+          annotations:
+            description: >-
+              nginx not running {{ $labels.namespace }}/{{$labels.pod}}
+            summary: Nginx has failed.
+          expr: >-
+            kube_pod_container_status_running{pod="nginx"} = 0
+          for: 10m
+          labels:
+            severity: critical

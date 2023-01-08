@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: alertmanager-config-example
+  namespace: nginx
+  labels:
+    app: nginx
+spec:
+  route:
+    groupBy: ['namespace']
+    groupWait: 60s
+    groupInterval: 10m
+    repeatInterval: 12h
+    receiver: 'webhook'
+  receivers:
+  - name: 'webhook'
+    webhookConfigs:
+    - url: 'http://examplexxxxxxxxxxxxxxx.com/'
